@@ -1,7 +1,7 @@
-import event, time, cyberpi, mbot2
+import event, time, cyberpi, mbot2, mbuild
 # initialize
 
-cyberpi.wifi.connect("CIS_WiFi", "CIS!2018#WiFi")
+cyberpi.wifi.connect("Verizon_XCR9LH", "chary-dna6-nap")
 while not cyberpi.wifi.is_connect():
     # DO SOMETHING
     pass
@@ -19,18 +19,21 @@ def btn_press():
         4 = right
         '''
         if cyberpi.controller.is_press('up'):
-            cyberpi.mesh_broadcast.set("message", 1)
-            cyberpi.console.println(1)
+            cyberpi.mesh_broadcast.set("killer", 1)
+            cyberpi.console.println('moving forward')
         elif cyberpi.controller.is_press('down'):
-            cyberpi.mesh_broadcast.set("message", 2)
-            cyberpi.console.println(2)
+            cyberpi.mesh_broadcast.set("killer", 2)
+            cyberpi.console.println('moving back')
         elif cyberpi.controller.is_press('left'):
-            cyberpi.mesh_broadcast.set("message", 3)
-            cyberpi.console.println(3)
+            cyberpi.mesh_broadcast.set("killer", 3)
+            cyberpi.console.println('turning left')
         elif cyberpi.controller.is_press('right'):
-            cyberpi.mesh_broadcast.set("message", 4)
-            cyberpi.console.println(4)
+            cyberpi.mesh_broadcast.set("killer", 4)
+            cyberpi.console.println('turning right')
+        elif cyberpi.controller.is_press('b'):
+            cyberpi.mesh_broadcast.set("killer", 5)
+            cyberpi.console.println('interact')
         else:
             # Joystick is neutral, send stop message
-            cyberpi.mesh_broadcast.set("message", 0)
-            cyberpi.console.println(0)
+            cyberpi.mesh_broadcast.set("killer", 0)
+            cyberpi.console.println('no action')
